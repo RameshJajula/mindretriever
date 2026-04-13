@@ -1,0 +1,3 @@
+[console_scripts]
+graphmind = graphmind.cli:main
+graphmind-api = graphmind.api:main

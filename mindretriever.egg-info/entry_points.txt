@@ -1,0 +1,6 @@
+[console_scripts]
+graphmind = graphmind.cli:main
+graphmind-api = graphmind.api:main
+mindretriever = mindretriever.cli:main
+mindretriever-api = mindretriever.api:main
+mindretriever-mcp = graphmind.mcp_server:main

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mindretriever": {
+      "command": "python",
+      "args": ["-m", "graphmind.mcp_server"],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}

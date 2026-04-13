@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GraphMind Enterprise</title>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; margin: 0; padding: 24px; background: #f6f8fb; color: #202430; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    .card { background: #ffffff; border: 1px solid #dde3ef; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    pre { white-space: pre-wrap; word-break: break-word; background: #f2f5fb; border-radius: 8px; padding: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>GraphMind Enterprise Report</h1>
+    <div class="card">
+      <h2>Summary</h2>
+      <p>Nodes: 17 | Edges: 15 | Communities: 2</p>
+    </div>
+    <div class="card">
+      <h2>Nodes</h2>
+      <pre>[
+  {
+    "id": "ui::Panel",
+    "label": "Panel.vue",
+    "kind": "ui_file",
+    "community": 0,
+    "degree": 9
+  },
+  {
+    "id": "import::Panel::./card.vue",
+    "label": "./Card.vue",
+    "kind": "import",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "component::Panel::props",
+    "label": "props",
+    "kind": "component",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "prop::Panel::title",
+    "label": "title",
+    "kind": "prop",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "prop::Panel::mode",
+    "label": "mode",
+    "kind": "prop",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "component::Panel::emit",
+    "label": "emit",
+    "kind": "component",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "emit::Panel::save",
+    "label": "save",
+    "kind": "emit",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "component::Panel::title",
+    "label": "title",
+    "kind": "component",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "slot::Panel::header",
+    "label": "header",
+    "kind": "slot",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "ui_ref::Panel::card",
+    "label": "Card",
+    "kind": "ui_ref",
+    "community": 0,
+    "degree": 1
+  },
+  {
+    "id": "ui::Widget",
+    "label": "Widget.svelte",
+    "kind": "ui_file",
+    "community": 1,
+    "degree": 6
+  },
+  {
+    "id": "import::Widget::./modal.svelte",
+    "label": "./Modal.svelte",
+    "kind": "import",
+    "community": 1,
+    "degree": 1
+  },
+  {
+    "id": "prop::Widget::name",
+    "label": "name",
+    "kind": "prop",
+    "community": 1,
+    "degree": 1
+  },
+  {
+    "id": "component::Widget::selected",
+    "label": "selected",
+    "kind": "component",
+    "community": 1,
+    "degree": 1
+  },
+  {
+    "id": "store::Widget::cartstore",
+    "label": "cartStore",
+    "kind": "store",
+    "community": 1,
+    "degree": 1
+  },
+  {
+    "id": "slot::Widget::default",
+    "label": "default",
+    "kind": "slot",
+    "community": 1,
+    "degree": 1
+  },
+  {
+    "id": "ui_ref::Widget::modal",
+    "label": "Modal",
+    "kind": "ui_ref",
+    "community": 1,
+    "degree": 1
+  }
+]</pre>
+    </div>
+    <div class="card">
+      <h2>Edges</h2>
+      <pre>[
+  {
+    "source": "ui::Panel",
+    "target": "import::Panel::./card.vue",
+    "relation": "imports",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "component::Panel::props",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "prop::Panel::title",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "prop::Panel::mode",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "component::Panel::emit",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "emit::Panel::save",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "component::Panel::title",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "slot::Panel::header",
+    "relation": "references",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Panel",
+    "target": "ui_ref::Panel::card",
+    "relation": "references",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Widget",
+    "target": "import::Widget::./modal.svelte",
+    "relation": "imports",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Widget",
+    "target": "prop::Widget::name",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Widget",
+    "target": "component::Widget::selected",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Widget",
+    "target": "store::Widget::cartstore",
+    "relation": "contains",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Widget",
+    "target": "slot::Widget::default",
+    "relation": "references",
+    "confidence": "EXTRACTED"
+  },
+  {
+    "source": "ui::Widget",
+    "target": "ui_ref::Widget::modal",
+    "relation": "references",
+    "confidence": "EXTRACTED"
+  }
+]</pre>
+    </div>
+  </div>
+</body>
+</html>

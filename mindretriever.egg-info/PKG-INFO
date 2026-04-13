@@ -1,0 +1,255 @@
+Metadata-Version: 2.4
+Name: mindretriever
+Version: 0.2.0
+Summary: Knowledge graph builder for code and product assets with token optimization for LLMs
+Author-email: Ramesh J <ramesh@example.com>
+Maintainer: Ramesh J
+License-Expression: MIT
+Project-URL: Homepage, https://github.com/rameshj/graphmind-rj
+Project-URL: Repository, https://github.com/rameshj/graphmind-rj.git
+Project-URL: Bug Tracker, https://github.com/rameshj/graphmind-rj/issues
+Project-URL: Documentation, https://github.com/rameshj/graphmind-rj#readme
+Keywords: knowledge-graph,code-analysis,llm,ast,context,token-optimization
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Build Tools
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: networkx>=3.2
+Requires-Dist: fastapi>=0.111.0
+Requires-Dist: uvicorn>=0.30.0
+Requires-Dist: pydantic>=2.7.0
+Requires-Dist: sqlalchemy>=2.0.30
+Requires-Dist: python-docx>=1.1.2
+Requires-Dist: python-multipart>=0.0.9
+Provides-Extra: dev
+Requires-Dist: pytest>=8.2.0; extra == "dev"
+Requires-Dist: httpx>=0.27.0; extra == "dev"
+Provides-Extra: mcp
+Requires-Dist: mcp[cli]>=1.0; extra == "mcp"
+Dynamic: requires-python
+
+# mindretriever
+
+Knowledge graph and context-pack tooling for AI-assisted software development.
+
+[![PyPI version](https://img.shields.io/pypi/v/mindretriever)](https://pypi.org/project/mindretriever/)
+[![Python](https://img.shields.io/pypi/pyversions/mindretriever)](https://pypi.org/project/mindretriever/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## Why mindretriever
+
+Large codebases make LLM workflows expensive and noisy. `mindretriever` builds a local project graph and returns task-focused context packs so you can send less irrelevant context to your assistant.
+
+Key outcomes:
+
+- Local-first analysis (no external data service required)
+- Multi-language extraction across backend and frontend assets
+- Context-pack endpoint for task-oriented LLM prompts
+- Incremental runs using file-hash caching
+
+## Install
+
+```bash
+pip install mindretriever
+```
+
+Verify CLI:
+
+```bash
+mindretriever --help
+```
+
+If your terminal cannot resolve the command (common on some Windows setups):
+
+```bash
+python -m mindretriever --help
+```
+
+## Quick Start
+
+### 1) Start API
+
+```bash
+mindretriever-api
+```
+
+Windows-safe fallback:
+
+```bash
+python -m uvicorn mindretriever.api:app --host 0.0.0.0 --port 8000
+```
+
+Health check:
+
+```bash
+curl http://localhost:8000/health
+```
+
+### 2) Run pipeline
+
+```bash
+mindretriever run .
+```
+
+Windows-safe fallback:
+
+```bash
+python -m mindretriever run .
+```
+
+### 3) Build a context pack
+
+```bash
+curl -X POST http://localhost:8000/api/context-pack \
+  -H "Content-Type: application/json" \
+  -d '{
+    "run_id": 1,
+    "task_type": "bug_fix",
+    "query": "Why is checkout timing out after deployment?",
+    "token_budget": 6000,
+    "include_artifacts": true
+  }'
+```
+
+## API Overview
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/health` | Service health |
+| POST | `/api/run` | Run extraction + graph build |
+| POST | `/api/upload` | Upload `.md`, `.docx`, `.sql` files |
+| GET | `/api/runs` | List run history |
+| GET | `/api/runs/{run_id}/graph` | Retrieve graph payload for a run |
+| POST | `/api/context-pack` | Get token-aware context pack |
+
+Upload field names:
+
+- Preferred: `files`
+- Compatibility alias: `file`
+
+Example upload:
+
+```bash
+curl -F "files=@architecture.md" -F "files=@schema.sql" http://localhost:8000/api/upload
+```
+
+## Supported Inputs
+
+### Detection support
+
+| Extension group | Status |
+|---|---|
+| `.py` | Extracted via Python AST extractor |
+| `.sql` | Extracted via SQL schema extractor |
+| `.js`, `.jsx`, `.ts`, `.tsx` | Extracted via TypeScript semantic extractor |
+| `.vue`, `.svelte` | Extracted via Vue/Svelte semantic extractor |
+| `.css`, `.scss` | Selector extraction via text semantic extractor |
+| `.md`, `.txt`, `.rst` | Heading/concept extraction via text semantic extractor |
+| `.docx` | Semantic extraction via DOCX extractor |
+| `.go`, `.java`, `.pdf` | Detected; deeper extraction in roadmap |
+
+### Frontend semantic coverage
+
+Current Vue/Svelte extraction includes:
+
+- script/template section-aware parsing
+- imports and component references
+- props (`defineProps`, `export let`)
+- emits (`defineEmits`)
+- stores (`$store` references)
+- slot usage (`<slot ...>`)
+
+## CLI
+
+```bash
+mindretriever run [path] [--full]
+```
+
+- default `path`: current directory
+- default mode: incremental
+- `--full`: force full reprocessing
+
+## Output Artifacts
+
+Generated in `graphmind-out/`:
+
+- `graph.json` - portable graph data
+- `graph.html` - human-readable graph report
+- `GRAPH_REPORT.md` - summary metrics
+- `graphmind.db` - SQLite run/node/edge history
+- `cache/file_hashes.json` - incremental cache
+- `artifacts/` - cached context artifacts
+
+## Development
+
+```bash
+git clone https://github.com/rameshj/graphmind-rj.git
+cd ramesh-graphmind
+pip install -e ".[dev]"
+python -m pytest tests -q
+```
+
+Build package:
+
+```bash
+python -m build
+python -m twine check dist/*
+```
+
+See [PUBLISH.md](PUBLISH.md) for a full release checklist.
+
+## Project Structure
+
+```text
+mindretriever/
+  __init__.py
+  __main__.py
+  cli.py
+  api.py
+graphmind/
+  api.py
+  cli.py
+  pipeline.py
+  detect.py
+  db.py
+  context_budget.py
+  retrieval_planner.py
+  prompt_templates.py
+  extractors/
+    python_ast.py
+    sql_schema.py
+    typescript_semantic.py
+    vue_svelte_semantic.py
+    text_semantic.py
+    docx_semantic.py
+  graph/
+    builder.py
+    analytics.py
+  exporters/
+    json_exporter.py
+    html_exporter.py
+```
+
+## Compatibility Notes
+
+- Python 3.10+
+- SQLite is bundled with Python; no external DB service required
+- For Windows command resolution issues, use module invocations shown above
+- Legacy CLI aliases `graphmind` and `graphmind-api` are still available for compatibility
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+## Links
+
+- PyPI: https://pypi.org/project/mindretriever/
+- Repository: https://github.com/rameshj/graphmind-rj
+- Issues: https://github.com/rameshj/graphmind-rj/issues

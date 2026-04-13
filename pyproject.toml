@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mindretriever"
+version = "0.2.0"
+description = "Knowledge graph builder for code and product assets with token optimization for LLMs"
+readme = "README.md"
+authors = [{ name = "Ramesh J", email = "ramesh@example.com" }]
+maintainers = [{ name = "Ramesh J" }]
+license = "MIT"
+requires-python = ">=3.10"
+keywords = ["knowledge-graph", "code-analysis", "llm", "ast", "context", "token-optimization"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Build Tools",
+]
+dependencies = [
+    "networkx>=3.2",
+    "fastapi>=0.111.0",
+    "uvicorn>=0.30.0",
+    "pydantic>=2.7.0",
+    "sqlalchemy>=2.0.30",
+    "python-docx>=1.1.2",
+    "python-multipart>=0.0.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/rameshj/graphmind-rj"
+Repository = "https://github.com/rameshj/graphmind-rj.git"
+"Bug Tracker" = "https://github.com/rameshj/graphmind-rj/issues"
+Documentation = "https://github.com/rameshj/graphmind-rj#readme"
+
+[project.scripts]
+mindretriever = "mindretriever.cli:main"
+mindretriever-api = "mindretriever.api:main"
+mindretriever-mcp = "graphmind.mcp_server:main"
+# Legacy aliases kept for backward compatibility.
+graphmind = "graphmind.cli:main"
+graphmind-api = "graphmind.api:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["graphmind*", "mindretriever*"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "httpx>=0.27.0",
+]
+mcp = [
+    "mcp[cli]>=1.0",
+]

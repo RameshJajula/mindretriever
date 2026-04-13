@@ -1,0 +1,263 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "Panel.vue",
+      "kind": "ui_file",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "id": "ui::Panel",
+      "community": 0
+    },
+    {
+      "label": "./Card.vue",
+      "kind": "import",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 2,
+      "id": "import::Panel::./card.vue",
+      "community": 0
+    },
+    {
+      "label": "props",
+      "kind": "component",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 3,
+      "id": "component::Panel::props",
+      "community": 0
+    },
+    {
+      "label": "title",
+      "kind": "prop",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 3,
+      "id": "prop::Panel::title",
+      "community": 0
+    },
+    {
+      "label": "mode",
+      "kind": "prop",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 3,
+      "id": "prop::Panel::mode",
+      "community": 0
+    },
+    {
+      "label": "emit",
+      "kind": "component",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 4,
+      "id": "component::Panel::emit",
+      "community": 0
+    },
+    {
+      "label": "save",
+      "kind": "emit",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 4,
+      "id": "emit::Panel::save",
+      "community": 0
+    },
+    {
+      "label": "title",
+      "kind": "component",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 5,
+      "id": "component::Panel::title",
+      "community": 0
+    },
+    {
+      "label": "header",
+      "kind": "slot",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 8,
+      "id": "slot::Panel::header",
+      "community": 0
+    },
+    {
+      "label": "Card",
+      "kind": "ui_ref",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "line": 9,
+      "id": "ui_ref::Panel::card",
+      "community": 0
+    },
+    {
+      "label": "Widget.svelte",
+      "kind": "ui_file",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "id": "ui::Widget",
+      "community": 1
+    },
+    {
+      "label": "./Modal.svelte",
+      "kind": "import",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "line": 2,
+      "id": "import::Widget::./modal.svelte",
+      "community": 1
+    },
+    {
+      "label": "name",
+      "kind": "prop",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "line": 3,
+      "id": "prop::Widget::name",
+      "community": 1
+    },
+    {
+      "label": "selected",
+      "kind": "component",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "line": 4,
+      "id": "component::Widget::selected",
+      "community": 1
+    },
+    {
+      "label": "cartStore",
+      "kind": "store",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "line": 4,
+      "id": "store::Widget::cartstore",
+      "community": 1
+    },
+    {
+      "label": "default",
+      "kind": "slot",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "line": 6,
+      "id": "slot::Widget::default",
+      "community": 1
+    },
+    {
+      "label": "Modal",
+      "kind": "ui_ref",
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "line": 7,
+      "id": "ui_ref::Widget::modal",
+      "community": 1
+    }
+  ],
+  "links": [
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "import::Panel::./card.vue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "component::Panel::props"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "prop::Panel::title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "prop::Panel::mode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "component::Panel::emit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "emit::Panel::save"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "component::Panel::title"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "slot::Panel::header"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Panel.vue",
+      "source": "ui::Panel",
+      "target": "ui_ref::Panel::card"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "source": "ui::Widget",
+      "target": "import::Widget::./modal.svelte"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "source": "ui::Widget",
+      "target": "prop::Widget::name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "source": "ui::Widget",
+      "target": "component::Widget::selected"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "source": "ui::Widget",
+      "target": "store::Widget::cartstore"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "source": "ui::Widget",
+      "target": "slot::Widget::default"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\v-rjajula\\AppData\\Local\\Temp\\pytest-of-v-rjajula\\pytest-1\\test_pipeline_extracts_vue_and0\\ui-sample\\Widget.svelte",
+      "source": "ui::Widget",
+      "target": "ui_ref::Widget::modal"
+    }
+  ]
+}

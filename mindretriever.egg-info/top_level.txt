@@ -1,0 +1,3 @@
+graphmind
+graphmind-out
+mindretriever

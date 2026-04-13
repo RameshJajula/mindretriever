@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "mindretriever": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "graphmind.mcp_server"],
+      "cwd": "${workspaceFolder}",
+      "env": {}
+    }
+  }
+}

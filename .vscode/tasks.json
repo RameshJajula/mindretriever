@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "benchmark-contentflow",
+			"type": "shell",
+			"command": "python -c \"print('ok')\"",
+			"isBackground": false
+		}
+	]
+}
