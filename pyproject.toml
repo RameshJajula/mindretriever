@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mindretriever"
-version = "0.2.0"
+version = "0.2.2"
 description = "Knowledge graph builder for code and product assets with token optimization for LLMs"
 readme = "README.md"
-authors = [{ name = "Ramesh J", email = "ramesh@example.com" }]
+authors = [{ name = "Ramesh J" }]
 maintainers = [{ name = "Ramesh J" }]
 license = "MIT"
 requires-python = ">=3.10"
@@ -34,10 +34,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/rameshj/graphmind-rj"
-Repository = "https://github.com/rameshj/graphmind-rj.git"
-"Bug Tracker" = "https://github.com/rameshj/graphmind-rj/issues"
-Documentation = "https://github.com/rameshj/graphmind-rj#readme"
+Homepage = "https://github.com/RameshJajula/mindretriever"
+Repository = "https://github.com/RameshJajula/mindretriever.git"
+"Bug Tracker" = "https://github.com/RameshJajula/mindretriever/issues"
+Documentation = "https://github.com/RameshJajula/mindretriever#readme"
 
 [project.scripts]
 mindretriever = "mindretriever.cli:main"
