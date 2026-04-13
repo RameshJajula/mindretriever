@@ -1,6 +1,6 @@
 # mindretriever
 
-Knowledge graph and context-pack tooling for AI-assisted software development.
+Local code knowledge graph and token-efficient context retrieval for AI coding workflows.
 
 [![PyPI version](https://img.shields.io/pypi/v/mindretriever)](https://pypi.org/project/mindretriever/)
 [![Python](https://img.shields.io/pypi/pyversions/mindretriever)](https://pypi.org/project/mindretriever/)
@@ -10,12 +10,14 @@ Knowledge graph and context-pack tooling for AI-assisted software development.
 
 Large codebases make LLM workflows noisy and expensive. Sending entire files to an assistant increases token usage, response time, and irrelevant context.
 
+Instead of reading dozens of files for a single bug-fix question, `mindretriever` builds a local repo graph and returns only the most relevant code, docs, and schema fragments within a token budget.
+
 `mindretriever` solves this by:
 
-- Building a local knowledge graph of your repo
-- Selecting only task-relevant snippets for each question
-- Returning a token-optimized context pack for bug fix, feature, refactor, test, review, and optimization workflows
-- Tracking measurable token and cost savings over time
+- Building a local graph of files, code symbols, imports, documents, and related artifacts
+- Selecting task-relevant snippets for bug fixes, feature work, refactors, tests, and reviews
+- Producing token-budgeted context packs instead of sending whole files
+- Recording token and estimated input-cost savings per retrieval run
 
 ## Key Features
 
@@ -60,6 +62,17 @@ python -m mindretriever --help
 mindretriever run .
 ```
 
+Expected output (example):
+
+```text
+Run complete
+- Files: 182
+- Nodes: 1248
+- Edges: 3671
+- Communities: 22
+- Out dir: graphmind-out/
+```
+
 Windows-safe fallback:
 
 ```bash
@@ -98,6 +111,33 @@ curl -X POST http://localhost:8000/api/context-pack \
   }'
 ```
 
+Sample response (trimmed):
+
+```json
+{
+  "tier": "snippets",
+  "total_tokens": 1840,
+  "code_snippets": [
+    {
+      "file_path": "backend/checkout/service.py",
+      "start_line": 81,
+      "end_line": 132,
+      "reason": "contains_bug"
+    }
+  ],
+  "recommended_next_steps": [
+    "Run the failing test to reproduce",
+    "Add breakpoints in the shown code"
+  ],
+  "token_savings": {
+    "full_tokens": 26340,
+    "pack_tokens": 1840,
+    "saved_tokens": 24500,
+    "savings_pct": 93.0
+  }
+}
+```
+
 ### 4) Check savings proof
 
 ```bash
@@ -113,6 +153,8 @@ This returns:
 ## Use Directly In VS Code And Cursor (MCP)
 
 `mindretriever` includes an MCP server so chat assistants can call tools automatically while you ask normal questions.
+
+Compatibility note: MCP currently runs from the legacy internal module path `graphmind.mcp_server`. Public package name and CLI remain `mindretriever`.
 
 ### VS Code setup
 
@@ -186,7 +228,7 @@ curl -F "files=@architecture.md" -F "files=@schema.sql" http://localhost:8000/ap
 
 ## Supported Inputs
 
-### Detection and extraction support
+### Implemented extraction
 
 | Extension group | Coverage |
 |---|---|
@@ -197,7 +239,12 @@ curl -F "files=@architecture.md" -F "files=@schema.sql" http://localhost:8000/ap
 | `.css`, `.scss` | CSS selector extraction |
 | `.md`, `.txt`, `.rst` | Heading/concept extraction |
 | `.docx` | Semantic extraction |
-| `.go`, `.java` | Detected; deeper extraction planned |
+
+### Basic detection only (deeper extraction planned)
+
+| Extension group | Coverage |
+|---|---|
+| `.go`, `.java` | File detection and pipeline inclusion only |
 
 ### Vue/Svelte semantic coverage
 
@@ -258,11 +305,19 @@ Token counting:
 - Uses `tiktoken` when installed
 - Falls back to `len(text) // 4` approximation otherwise
 
+### Example benchmark (representative)
+
+| Query | Full tokens | Packed tokens | Savings % | Files considered | Files included | Latency |
+|---|---:|---:|---:|---:|---:|---:|
+| Fix checkout timeout after deploy | 26,340 | 1,840 | 93.0% | 182 | 9 | 1.2s |
+| Add coupon support to cart API | 24,110 | 2,210 | 90.8% | 182 | 11 | 1.4s |
+| Refactor auth middleware tests | 19,870 | 2,460 | 87.6% | 182 | 14 | 1.1s |
+
 ## Development
 
 ```bash
-git clone https://github.com/rameshj/graphmind-rj.git
-cd ramesh-graphmind
+git clone https://github.com/RameshJajula/mindretriever.git
+cd mindretriever
 pip install -e ".[dev,mcp]"
 python -m pytest tests -q
 ```
@@ -277,6 +332,8 @@ python -m twine check dist/*
 See [PUBLISH.md](PUBLISH.md) for release steps.
 
 ## Project Structure
+
+`mindretriever/` is the public package interface. `graphmind/` contains internal and legacy-compatible modules retained during migration.
 
 ```text
 mindretriever/
@@ -316,6 +373,7 @@ graphmind/
 - SQLite is bundled with Python; no external DB required
 - For Windows command resolution issues, use module invocation commands
 - Legacy CLI aliases `graphmind` and `graphmind-api` remain available
+- Output directory currently remains `graphmind-out/` for backward compatibility
 
 ## License
 
@@ -324,5 +382,5 @@ MIT. See [LICENSE](LICENSE).
 ## Links
 
 - PyPI: https://pypi.org/project/mindretriever/
-- Repository: https://github.com/rameshj/graphmind-rj
-- Issues: https://github.com/rameshj/graphmind-rj/issues
+- Repository: https://github.com/RameshJajula/mindretriever
+- Issues: https://github.com/RameshJajula/mindretriever/issues
